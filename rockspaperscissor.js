@@ -11,6 +11,7 @@ function computerPlay(){
 //game()
 
 function playRound(playerSelection, computerSelection) {
+  do{
   if (playerSelection === computerSelection){
   return "tie, play again"
   }else if (playerSelection == 'rock' && computerSelection == 'scissors'){
@@ -27,6 +28,8 @@ function playRound(playerSelection, computerSelection) {
   }else
     computerScore++
     return "you lose"
+}
+while (playerScore < 5) || (computerScore < 5)
 }
 
 
