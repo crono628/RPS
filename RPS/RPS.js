@@ -10,15 +10,15 @@ function playRound(playerSelection, computerSelection){
     if (playerSelection === computerSelection){
         return tie;
     }
-    if (playerSelection === 'rock'){
+    if (playerSelection === 'rock' && computerSelection === 'scissors'){
         playerScore++
         return human;
     }
-    if (playerSelection === 'paper'){
+    if (playerSelection === 'paper' && computerSelection === 'rock'){
         playerScore++
         return human; 
     }
-    if (playerSelection === 'scissors'){
+    if (playerSelection === 'scissors'&& computerSelection === 'paper'){
         playerScore++
         return human;
     }
@@ -37,18 +37,20 @@ let computerScore = 0;
 
 
 
-var i = 0;
+let i = 0;
 let play = () => {
-    let playerSelection = prompt.toLowerCase('choose rock, paper, or scissors');
+    let playerSelection = prompt('choose rock, paper, or scissors').toLowerCase();
     const computerSelection = computerPlay()
+    console.log(computerSelection)
     console.log(playRound(playerSelection, computerSelection))
     console.log("your score = " + playerScore);
-    console.log("Computer's score = " + computerScore);
+    console.log("computer score = " + computerScore);
+    console.log();
     i++;
     if (i !== 5) {
         play();
     } else {
-        alert("Game Over=> User("+playerScore+") vs Computer("+computerScore+")");
+        alert('GAME OVER\nyour score '+playerScore+' \ncomputer score '+computerScore+'');
     }
 }
 
