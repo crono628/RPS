@@ -32,7 +32,6 @@ function playRound(playerSelection, computerSelection){
 let human = 'you win'
 let computer = 'computer wins'
 let tie = 'tie, play again'
-//let playerSelection = prompt(' Choose Rock, Paper, or Scissors').toLowerCase();
 let playerScore = 0;
 let computerScore = 0;
 
@@ -40,7 +39,7 @@ let computerScore = 0;
 
 var i = 0;
 let play = () => {
-    let playerSelection = prompt("Pick a move");
+    let playerSelection = prompt.toLowerCase('choose rock, paper, or scissors');
     const computerSelection = computerPlay()
     console.log(playRound(playerSelection, computerSelection))
     console.log("your score = " + playerScore);
