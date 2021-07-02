@@ -1,59 +1,67 @@
-let choices = ['rock', 'paper', 'scissors'];
+let choices = ["rock", "paper", "scissors"];
+let human = "you win";
+let computer = "computer wins";
+let tie = "tie, play again";
 
-function computerPlay(){
-  let num = choices [Math.floor(Math.random() * 3)]
-  return num
-} 
-
-
-function playRound(playerSelection, computerSelection){
-    if (playerSelection === computerSelection){
-        return tie;
-    }
-    if (playerSelection === 'rock' && computerSelection === 'scissors'){
-        playerScore++
-        return human;
-    }
-    if (playerSelection === 'paper' && computerSelection === 'rock'){
-        playerScore++
-        return human; 
-    }
-    if (playerSelection === 'scissors'&& computerSelection === 'paper'){
-        playerScore++
-        return human;
-    }
-    else {
-        computerScore++
-        return computer;
-    }
-
+function computerPlay() {
+  let num = choices[Math.floor(Math.random() * 3)];
+  return num;
 }
 
-let human = 'you win'
-let computer = 'computer wins'
-let tie = 'tie, play again'
+function playRound(playerSelection, computerSelection) {
+  if (playerSelection === computerSelection) {
+    round++;
+    return tie;
+  }
+  if (playerSelection === "rock" && computerSelection === "scissors") {
+    playerScore++;
+    round++;
+    return human;
+  }
+  if (playerSelection === "paper" && computerSelection === "rock") {
+    playerScore++;
+    round++;
+    return human;
+  }
+  if (playerSelection === "scissors" && computerSelection === "paper") {
+    playerScore++;
+    round++;
+    return human;
+  } else {
+    computerScore++;
+    round++;
+    return computer;
+  }
+}
+
 let playerScore = 0;
 let computerScore = 0;
+let round = 0;
 
+let game = () => {
+  let playerSelection = document.querySelectorAll("button");
+  playerSelection.forEach(function (userItem) {
+    return userItem;
+  });
 
+  const computerSelection = computerPlay();
 
-let i = 0;
-let play = () => {
-    let playerSelection = prompt('choose rock, paper, or scissors').toLowerCase();
-    const computerSelection = computerPlay()
-    console.log(computerSelection)
-    console.log(playRound(playerSelection, computerSelection))
-    console.log("your score = " + playerScore);
-    console.log("computer score = " + computerScore);
-    console.log();
-    i++;
-    if (i !== 5) {
-        play();
+  console.log(
+    `round ${round} - ${playRound(playerSelection, computerSelection)} `
+  );
+  console.log(`you chose ${playerSelection}, score is ${playerScore}`);
+  console.log(`computer chose ${computerSelection}, score ${computerScore}`);
+  console.log("");
+
+  if (playerScore !== 5) {
+    if (computerScore !== 5) {
+      game();
     } else {
-        alert('GAME OVER\nyour score '+playerScore+' \ncomputer score '+computerScore+'');
+      console.log("game over, the computer wins the series");
     }
-}
+  } else {
+    console.log("game over, you win the series");
+  }
+};
 
-play();
-
-
+game();
