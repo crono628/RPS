@@ -36,23 +36,30 @@ function playRound(playerSelection, computerSelection) {
 
 let playerScore = 0;
 let computerScore = 0;
-let round = 0;
+let round = 1;
 
 let game = () => {
-  let playerSelection = document.querySelectorAll("button");
-  playerSelection.forEach(function (userItem) {
-    return userItem;
-  });
+const buttons = document.querySelectorAll('button');
 
+// buttons.forEach((button) => {
+//   button.addEventListener('click', () => {
+//     playerSelection = button.id;
+//   });
+// });
+
+  const playerSelection = prompt('choose')
   const computerSelection = computerPlay();
 
   console.log(
     `round ${round} - ${playRound(playerSelection, computerSelection)} `
   );
   console.log(`you chose ${playerSelection}, score is ${playerScore}`);
-  console.log(`computer chose ${computerSelection}, score ${computerScore}`);
-  console.log("");
+  console.log(`computer chose ${computerSelection}, score is ${computerScore}`);
+  console.log("--");
 
+  if (playerSelection === null) {
+    return;
+  }  
   if (playerScore !== 5) {
     if (computerScore !== 5) {
       game();
