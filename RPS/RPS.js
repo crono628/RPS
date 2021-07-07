@@ -59,15 +59,14 @@ function game() {
   function endSeries() {
     if (playerScore === 5) {
       console.log("YOU WIN THE SERIES");
-      reset();
     }
     if (computerScore === 5) {
       console.log("YOU LOSE THE SERIES");
-      reset();
     }
+    console.log(playerScore);
+    console.log(computerScore);
   }
-  console.log(playerScore);
-  console.log(computerScore);
+
   let checkScore = () =>
     playerScore === 5 ? true : computerScore === 5 ? true : false;
 
@@ -77,7 +76,7 @@ function game() {
       computerScore = 0;
     }
   }
-
+  reset();
   console.log("player: " + playerSelection);
   console.log("computer: " + computerSelection);
   console.log(playRound(playerSelection, computerSelection));
