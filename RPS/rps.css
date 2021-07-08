@@ -1,0 +1,52 @@
+.green-back {
+    background-color: rgb(32, 185, 178)
+}
+
+#gameName {
+    font-size: 350%;
+}
+
+#body {
+    text-align: center;
+    margin: auto;
+    align-self: center;
+    font-family: 'VT323', monospace;
+}
+
+.white-text {
+    color: white;
+    font-size: 20px;
+}
+
+button {
+    font-size: 35px;
+    border-radius: 12px;
+    margin: 20px;
+    width: 110px;
+    background: none;
+    border: none;
+    outline: none;
+    font-family: 'VT323', monospace;
+    transition: 200ms;
+}
+
+button:hover {
+    transform: scale(1.3);
+    font-family: 'VT323', monospace;
+}
+
+p {
+    font-size: 300%;
+}
+
+.score p {
+    display: inline-block;
+    padding: 20px;
+    white-space: pre;
+}
+
+#gameOverString {
+    font-size: 300%;
+    justify-self: center;
+    white-space: pre;
+}

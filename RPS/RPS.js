@@ -1,74 +1,83 @@
 let choices = ["rock", "paper", "scissors"];
-let human = "you win";
-let computer = "computer wins";
+let human = () => ("you win", reset(), playerScore++, newScore(), endSeries());
+let computer = () => ("computer wins", reset(), computerScore++, newScore(), endSeries());
 let tie = "tie, play again";
-
-function computerPlay() {
-  let num = choices[Math.floor(Math.random() * 3)];
-  return num;
-}
-
-function playRound(playerSelection, computerSelection) {
-  if (playerSelection === computerSelection) {
-    round++;
-    return tie;
-  }
-  if (playerSelection === "rock" && computerSelection === "scissors") {
-    playerScore++;
-    round++;
-    return human;
-  }
-  if (playerSelection === "paper" && computerSelection === "rock") {
-    playerScore++;
-    round++;
-    return human;
-  }
-  if (playerSelection === "scissors" && computerSelection === "paper") {
-    playerScore++;
-    round++;
-    return human;
-  } else {
-    computerScore++;
-    round++;
-    return computer;
-  }
-}
-
 let playerScore = 0;
 let computerScore = 0;
 let round = 1;
 
-let game = () => {
+document.getElementById("rock").onclick = game;
+document.getElementById("paper").onclick = game;
+document.getElementById("scissors").onclick = game;
+
 const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        console.log(button.id)
+    });
+});
 
-// buttons.forEach((button) => {
-//   button.addEventListener('click', () => {
-//     playerSelection = button.id;
-//   });
-// });
+console.log(buttons)
 
-  const playerSelection = prompt('choose')
-  const computerSelection = computerPlay();
+function computerPlay() {
+    let num = choices[Math.floor(Math.random() * 3)];
+    return num;
+}
 
-  console.log(
-    `round ${round} - ${playRound(playerSelection, computerSelection)} `
-  );
-  console.log(`you chose ${playerSelection}, score is ${playerScore}`);
-  console.log(`computer chose ${computerSelection}, score is ${computerScore}`);
-  console.log("--");
+function game() {
+    const playerSelection = this.id;
+    const computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
 
-  if (playerSelection === null) {
-    return;
-  }  
-  if (playerScore !== 5) {
-    if (computerScore !== 5) {
-      game();
-    } else {
-      console.log("game over, the computer wins the series");
+    function playRound(playerChoice, computerChoice) {
+        if (playerChoice === computerChoice) {
+            return tie;
+        }
+        if (playerChoice === "rock" && computerChoice === "scissors") {
+            round++;
+            return human();
+        }
+        if (playerChoice === "paper" && computerChoice === "rock") {
+            round++;
+            return human();
+        }
+        if (playerChoice === "scissors" && computerChoice === "paper") {
+            round++;
+            return human();
+        } else {
+            round++;
+            return computer();
+        }
     }
-  } else {
-    console.log("game over, you win the series");
-  }
-};
+}
 
-game();
+function newScore() {
+    let scoreHuman = document.querySelector("#playerScore")
+    scoreHuman.textContent = `Your score\n${playerScore}`
+    let scoreComp = document.querySelector("#computerScore")
+    scoreComp.textContent = `Computer score\n${computerScore}`
+}
+
+function reset() {
+    if (endSeries()) {
+        playerScore = 0;
+        computerScore = 0;
+        let end = document.querySelector("#gameOverString");
+        end.textContent = ""
+        return true
+    }
+    return false
+}
+
+function endSeries() {
+    let end = document.querySelector("#gameOverString");
+    if (playerScore >= 5) {
+        end.textContent = "YOU ARE THE CHAMPION\nmake a choice to play again";
+        return true
+    }
+    if (computerScore >= 5) {
+        end.textContent = "COMPUTER IS THE CHAMPION\nmake a choice to play again"
+        return true
+    }
+    return false;
+}
