@@ -1,32 +1,45 @@
-.green-back{
-    background-color: green
-  }
-  #body{
+.green-back {
+    background-color: rgb(32, 185, 178)
+}
+
+#gameName {
+    font-size: 350%;
+}
+
+#body {
     text-align: center;
     margin: auto;
     align-self: center;
     font-family: 'VT323', monospace;
-  }
-  .white-text{
+}
+
+.white-text {
     color: white;
     font-size: 20px;
-  }
-  
-  button{
-    font-size: 35px;
+}
+
+button {
+    font-size: 25px;
     border-radius: 12px;
-    padding: 15px;
-    width: 220px
-  }
-  button:hover {
-      background: blue;
-  }
-  
-  p{
-    font-size: 30px;
-  }
-  
-  .score p{
+    margin: 20px;
+    width: 110px;
+    background: none;
+    border: none;
+    outline: none;
+    font-family: 'Titillium Web', sans-serif;
+    transition: 200ms;
+}
+
+button:hover {
+    transform: scale(2.2);
+    font-family: 'VT323', monospace;
+}
+
+p {
+    font-size: 300%;
+}
+
+.score p {
     display: inline-block;
     padding: 20px;
-  }
+}
