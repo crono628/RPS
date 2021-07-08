@@ -10,6 +10,14 @@ document.getElementById("rock").onclick = game;
 document.getElementById("paper").onclick = game;
 document.getElementById("scissors").onclick = game;
 
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        console.log(button.id)
+    });
+});
+
+console.log(buttons)
 
 function computerPlay() {
     let num = choices[Math.floor(Math.random() * 3)];
@@ -42,7 +50,6 @@ function game() {
         }
     }
 }
-console.log(game)
 
 function newScore() {
     let scoreHuman = document.querySelector("#playerScore")
