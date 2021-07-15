@@ -1,17 +1,26 @@
 let choices = ["rock", "paper", "scissors"];
 
+function fullSong() {
+  let fullS = document.getElementById("fullSong")
+  fullS.currentTime = 0
+  fullS.play();
+}
+
 function rockTheme() {
   let rockT = document.getElementById("rockTheme")
+  rockT.currentTime = 0
   rockT.play();
 }
 
 function paperTheme() {
   let paperT = document.getElementById("paperTheme")
+  paperT.currentTime = 0
   paperT.play();
 } 
 
 function scissorsTheme() {
   let scissorsT = document.getElementById("scissorsTheme")
+  scissorsT.currentTime = 0
   scissorsT.play();
 }
 
@@ -71,16 +80,19 @@ function playRound(playerChoice, computerChoice) {
   if (playerChoice === "rock" && computerChoice === "scissors") {
     round++;
     playerScore += 1;
+    rockTheme();
     return humanF();
   }
   if (playerChoice === "paper" && computerChoice === "rock") {
     round++;
     playerScore += 1;
+    paperTheme();
     return humanF();
   }
   if (playerChoice === "scissors" && computerChoice === "paper") {
     round++;
     playerScore += 1;
+    scissorsTheme();
     return humanF();
   } else {
     round++;
@@ -98,12 +110,14 @@ function newScore() {
 
 function endSeries() {
   let end = document.querySelector("#gameOverString");
-  if (playerScore >= 5) {
+  if (playerScore >= 3) {
     end.textContent = "YOU ARE THE CHAMPION\nmake a choice to play again";
+    fullSong();
     return true;
   }
-  if (computerScore >= 5) {
+  if (computerScore >= 3) {
     end.textContent = "COMPUTER IS THE CHAMPION\nmake a choice to play again";
+    fullSong();
     return true;
   }
   return false;
