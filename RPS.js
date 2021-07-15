@@ -1,5 +1,20 @@
 let choices = ["rock", "paper", "scissors"];
 
+function rockTheme() {
+  let rockT = document.getElementById("rockTheme")
+  rockT.play();
+}
+
+function paperTheme() {
+  let paperT = document.getElementById("paperTheme")
+  paperT.play();
+} 
+
+function scissorsTheme() {
+  let scissorsT = document.getElementById("scissorsTheme")
+  scissorsT.play();
+}
+
 function humanF() {
   let human = document.querySelector("#round-text");
   human.textContent = "you win this round";
