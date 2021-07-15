@@ -1,43 +1,48 @@
 let choices = ["rock", "paper", "scissors"];
 
-function fullSong() {
-  let fullS = document.getElementById("fullSong")
-  fullS.currentTime = 0
-  fullS.play();
+function stopAudio() {
+  let fullS = document.getElementById("fullSong");
+  fullS.stop();
 }
 
-function rockTheme() {
-  let rockT = document.getElementById("rockTheme")
-  rockT.currentTime = 0
-  rockT.play();
+// function fullSong() {
+//   let fullS = document.getElementById("fullSong");
+//   fullS.currentTime = 0;
+//   fullS.play();
+// }
+
+function rockWin() {
+  let rockW = document.getElementById("rockWin");
+  rockW.currentTime = 0;
+  rockW.play();
 }
 
-function paperTheme() {
-  let paperT = document.getElementById("paperTheme")
-  paperT.currentTime = 0
-  paperT.play();
-} 
-
-function scissorsTheme() {
-  let scissorsT = document.getElementById("scissorsTheme")
-  scissorsT.currentTime = 0
-  scissorsT.play();
+function paperWin() {
+  let paperW = document.getElementById("paperWin");
+  paperW.currentTime = 0;
+  paperW.play();
 }
 
-function humanF() {
-  let human = document.querySelector("#round-text");
-  human.textContent = "you win this round";
+function scissorsWin() {
+  let scissorsW = document.getElementById("scissorsWin");
+  scissorsW.currentTime = 0;
+  scissorsW.play();
 }
 
-function computerF() {
-  let computer = document.querySelector("#round-text");
-  computer.textContent = "computer wins this round";
-}
+// function humanF() {
+//   let human = document.querySelector("#round-text");
+//   human.textContent = "you win this round";
+// }
 
-function tieF() {
-  let tie = document.querySelector("#round-text");
-  tie.textContent = "tie, play again";
-}
+// function computerF() {
+//   let computer = document.querySelector("#round-text");
+//   computer.textContent = "computer wins this round";
+// }
+
+// function tieF() {
+//   let tie = document.querySelector("#round-text");
+//   tie.textContent = "tie, play again";
+// }
 
 let playerScore = 0;
 let computerScore = 0;
@@ -75,29 +80,36 @@ function playRound(playerChoice, computerChoice) {
   let versus = document.querySelector("#versus");
   versus.textContent = roundIndividual;
   if (playerChoice === computerChoice) {
-    return tieF();
+    let tie = document.querySelector("#round-text");
+    tie.textContent = "tie, play again";
+    return true;
   }
   if (playerChoice === "rock" && computerChoice === "scissors") {
     round++;
     playerScore += 1;
-    rockTheme();
-    return humanF();
+    let human = document.querySelector("#round-text");
+    human.textContent = "you win this round";
+    return rockWin();
   }
   if (playerChoice === "paper" && computerChoice === "rock") {
     round++;
     playerScore += 1;
-    paperTheme();
-    return humanF();
+    let human = document.querySelector("#round-text");
+    human.textContent = "you win this round";
+    return paperWin();
   }
   if (playerChoice === "scissors" && computerChoice === "paper") {
     round++;
     playerScore += 1;
-    scissorsTheme();
-    return humanF();
+    let human = document.querySelector("#round-text");
+    human.textContent = "you win this round";
+    return scissorsWin();
   } else {
     round++;
     computerScore += 1;
-    return computerF();
+    let computer = document.querySelector("#round-text");
+    computer.textContent = "computer wins this round";
+    return true
   }
 }
 
@@ -110,14 +122,14 @@ function newScore() {
 
 function endSeries() {
   let end = document.querySelector("#gameOverString");
-  if (playerScore >= 3) {
+  if (playerScore >= 5) {
     end.textContent = "YOU ARE THE CHAMPION\nmake a choice to play again";
-    fullSong();
+    
     return true;
   }
-  if (computerScore >= 3) {
+  if (computerScore >= 5) {
     end.textContent = "COMPUTER IS THE CHAMPION\nmake a choice to play again";
-    fullSong();
+    
     return true;
   }
   return false;
