@@ -1,1 +1,1 @@
-Crono628.GitHub.io/RPS
+Crono628.GitHub.io/RPS/
