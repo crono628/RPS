@@ -1,52 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<link href="rps.css" rel="stylesheet" type="text/css" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 </head>
-<h1 id=gameName class="white-text">PICK ROCK, PAPER OR SCISSORS</h1>
-<p style="color: #636363" style="font-size: 150%">first to 5 points wins</p>
 
-<body id="body" class="green-back">
-  <div id='container' class='options'>
-    <button class='choices' id='rock'>ROCK</button>
-    <button class='choices' id='paper'>PAPER</button>
-    <button class='choices' id='scissors'>SCISSORS</button>
+<body>
+  <h1>Choose Rock, Paper or Scissors</h1>
+  <div class="choices">
+    <button>ROCK</button>
+    <button>PAPER</button>
+    <button>SCISSORS</button>
   </div>
-  <div style="font-size: 150%" id="round"></div>
-  <div style="font-size: 150%" id="versus"></div>
-  <div style="font-size: 150%" id="round-text"></div>
-  <div class="score">
-    <p id="playerScore">Your score</br>0</p>
-    <p id="computerScore">Computer score</br>0</p>
-  </div>
-  <div id="gameOverString"></div>
-  <div class="allAudio">
-    <audio src="rpsgame/Paper Lose.mp3"></audio>
-    <audio id="paperTheme" src="rpsgame/Paper Theme.mp3"></audio>
-    <audio id="paperWin" src="rpsgame/Paper Win.mp3"></audio>
-    <audio src="rpsgame/Rock Lose.mp3"></audio>
-    <audio id="rockTheme" src="rpsgame/Rock Theme.mp3"></audio>
-    <audio id="rockWin" src="rpsgame/Rock Win.mp3"></audio>
-    <audio id="fullSong" src="rpsgame/RPS Full Song.mp3"></audio>
-    <audio src="rpsgame/Scissor Lose.mp3"></audio>
-    <audio id="scissorsTheme" src="rpsgame/Scissor Theme.mp3"></audio>
-    <audio id="scissorsWin" src="rpsgame/Scissor Win.mp3"></audio>
 
-
-  </div>
 </body>
-<script src="RPS.js"></script>
 
 </html>

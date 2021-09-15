@@ -1,0 +1,31 @@
+* {
+  border: 1px solid black;
+}
+
+body {
+  background-color: aqua;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 40px;
+  color: navy
+}
+
+.choices {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+
+}
+
+button {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.5);
+}
