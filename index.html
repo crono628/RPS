@@ -2,22 +2,41 @@
 <html lang="en">
 
 <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Rock-Paper-Scissors</title>
   <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </head>
 
 <body>
-  <h1>Choose Rock, Paper or Scissors</h1>
-  <div class="choices">
-    <button>ROCK</button>
-    <button>PAPER</button>
-    <button>SCISSORS</button>
+
+  <div class="for-blur">
+    <h1>Choose Rock, Paper or Scissors</h1>
+    <div class="choices">
+      <button data-choice="rock">ROCK</button>
+      <button data-choice="paper">PAPER</button>
+      <button data-choice="scissor">SCISSORS</button>
+    </div>
+    <div class="announcement"></div>
+    <div class="current">
+      <div>Player
+        <span data-player>0</span>
+      </div>
+      <div>Computer
+        <span data-computer>0</span>
+      </div>
+    </div>
   </div>
 
+  <div id="popup">
+    testing
+
+  </div>
 </body>
 
 </html>
