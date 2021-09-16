@@ -1,1 +1,1 @@
-Crono628.GitHub.io/RPS/
+[Live Preview](https://crono628.github.io/Rock-Paper-Scissors/)
