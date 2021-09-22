@@ -50,10 +50,15 @@ button:hover {
 span {
   font-size: 25px;
   margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+    justify-content: center;
+  justify-items: center;
+  align-items: center;
 }
 
 .announcement {
-  height: 50px;
+  height: 70px;
   text-align: center;
   font-size: 40px;
   margin-top: 10px;
@@ -74,9 +79,16 @@ span {
   align-items: center;
   text-align: center;
   font-size: 35px;
+  animation-name: opacity;
+  animation-duration: 6s;
 }
 
 .blur {
   filter: blur(3px);
-  transition: 7s;
+  transition: 3s;
+}
+
+@keyframes opacity{
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
