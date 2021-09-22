@@ -41,7 +41,6 @@ button:hover {
   justify-items: center;
   align-items: center;
   font-size: 30px;
-  margin: 10px;
 }
 
 .player-div,
@@ -55,6 +54,7 @@ button:hover {
   justify-content: flex-start;
   justify-items: center;
   align-items: center;
+  width: auto;
 }
 
 .announcement {
