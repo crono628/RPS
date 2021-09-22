@@ -40,28 +40,31 @@ button:hover {
   justify-content: center;
   justify-items: center;
   align-items: center;
-}
-
-.current div {
   font-size: 30px;
-  margin-top: 20px;
+  margin: 10px;
 }
 
-span {
-  font-size: 25px;
+.player-div,
+.computer-div {
+  margin: 10px;
+  font-size: 20px;
+  color: rgb(59, 59, 59);
+  opacity: 60%;
   margin-left: 5px;
   display: flex;
-  flex-direction: column;
-    justify-content: center;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
   justify-items: center;
   align-items: center;
+  gap: 20px;
 }
 
 .announcement {
-  height: 70px;
+  height: 80px;
   text-align: center;
   font-size: 40px;
   margin-top: 10px;
+  padding: 10px;
 }
 
 
@@ -80,15 +83,20 @@ span {
   text-align: center;
   font-size: 35px;
   animation-name: opacity;
-  animation-duration: 6s;
+  animation-duration: 2s;
 }
 
 .blur {
   filter: blur(3px);
-  transition: 3s;
+  transition: 2s;
 }
 
-@keyframes opacity{
-  from {opacity: 0;}
-  to {opacity: 1;}
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

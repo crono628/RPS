@@ -4,10 +4,8 @@ const body = document.querySelector('.for-blur')
 const popup = document.querySelector('#popup')
 const playerTally = document.querySelector('[data-player]')
 const computerTally = document.querySelector('[data-computer]')
-const playerSpan = document.querySelector('.player-span')
-const computerSpan = document.querySelector('.computer-span')
-const playerDiv = document.createElement('div')
-const computerDiv = document.createElement('div')
+const playerDiv = document.querySelector('.player-div')
+const computerDiv = document.querySelector('.computer-div')
 
 let gameOn = true
 let playerScore = 0
@@ -18,7 +16,10 @@ let computerScore = 0
 choiceBtn.forEach(item => {
   item.addEventListener('click', () => {
     const buttonChoice = item.dataset.choice
-    playRound(buttonChoice, computerPlay())
+    let computerChoice = computerPlay()
+    playRound(buttonChoice, computerChoice)
+    playerDiv.appendChild(recordSelection(buttonChoice))
+    computerDiv.appendChild(recordSelection(computerChoice))
   })
 })
 
@@ -52,34 +53,28 @@ function playRound(player, computer) {
     announcement.textContent = 'You win this round!'
     playerScore++
     playerTally.textContent = `${playerScore}`
-    recordSelections(player, computer)
     checkGameOn()
   } else if (player == 'paper' && computer == 'rock') {
     announcement.textContent = 'You win this round!'
     playerScore++
     playerTally.textContent = `${playerScore}`
-    recordSelections(player, computer)
     checkGameOn()
   } else if (player == 'scissors' && computer == 'paper') {
     announcement.textContent = 'You win this round!'
     playerScore++
     playerTally.textContent = `${playerScore}`
-    recordSelections(player, computer)
     checkGameOn()
   } else {
     announcement.textContent = 'The computer wins this round!'
     computerScore++
     computerTally.textContent = `${computerScore}`
-    recordSelections(player, computer)
     checkGameOn()
   }
-
 }
 
-function recordSelections (a, b){
-playerDiv.style.border = 'black solid'
-playerTally.appendChild(playerDiv)
-playerDiv.textContent = `${playerDiv.textContent += a}`
-computerTally.appendChild(computerDiv)
-computerDiv.textContent = `${computerDiv.textContent += b}`
+function recordSelection(a) {
+  const div = document.createElement('div')
+  div.setAttribute('id', 'record')
+  div.textContent = `${a}`
+  return div
 }
