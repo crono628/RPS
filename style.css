@@ -46,7 +46,7 @@ button:hover {
 
 .player-div,
 .computer-div {
-  margin: 10px;
+  margin: auto;
   font-size: 20px;
   color: rgb(59, 59, 59);
   opacity: 60%;
