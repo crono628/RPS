@@ -26,14 +26,15 @@ choiceBtn.forEach(button => {
 restartBtn.onclick = () => restartGame()
 
 function restartGame() {
+  gameOn = true
   playerScore = 0
   computerScore = 0
   body.classList.remove('blur')
   popupText.style.display = 'none'
   popup.style.display = 'none'
   announcement.textContent = ''
-  playerTally.textContent = '0'
-  computerTally.textContent = '0'
+  playerTally.textContent = `${playerScore}`
+  computerTally.textContent = `${computerScore}`
   while (playerDiv.firstChild) {
     playerDiv.removeChild(playerDiv.firstChild);
   }
@@ -48,13 +49,13 @@ function computerPlay() {
 }
 
 function checkGameOn() {
-  if (playerScore == 5) {
+  if (playerScore == 3) {
     gameOn = false
     body.classList.add('blur')
     popupText.style.display = 'flex'
     popup.style.display = 'flex'
     popupText.textContent = 'YOU ARE THE CHAMPION!'
-  } else if (computerScore == 5) {
+  } else if (computerScore == 3) {
     gameOn = false
     body.classList.add('blur')
     popupText.style.display = 'flex'
