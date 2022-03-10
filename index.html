@@ -1,44 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap"
+      rel="stylesheet"
+    />
+    <script src="script.js" defer></script>
+    <title>Rock Paper Scissors</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">Rock Paper Scissors</h1>
 
-<head>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rock-Paper-Scissors</title>
-	<link rel="stylesheet" href="style.css">
-	<script src="script.js" defer>
-
-	</script>
-</head>
-
-<body>
-	<div class="for-blur">
-		<h1>Choose Rock, Paper or Scissors</h1>
-		<div class="choices">
-			<button class="choice" data-choice="rock">ROCK</button>
-      <button class="choice" data-choice="paper">PAPER</button>
-      <button class="choice" data-choice="scissors">SCISSORS</button>
-    </div>
-    <div class="announcement"></div>
-    <div class="current">
-      <div>Player <span data-player>0</span>
-        <div class="player-div"></div>
+      <div class="selections">
+        <div class="rock">🪨</div>
+        <div class="paper">📃</div>
+        <div class="scissors">✂️</div>
       </div>
-      <div>Computer <span data-computer>0</span>
-        <div class="computer-div"></div>
+      <div class="scores">
+        <div class="player-scoreboard">Player: 0</div>
+        <div class="computer-scoreboard">Computer: 0</div>
+      </div>
+      <div class="results-container">
+        <h3>Results</h3>
+        <div class="results">
+          <div class="player-results"></div>
+          <div class="computer-results"></div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="popup">
-    <div>
-      <div class="popup-text"></div>
-      <button class="restart">Begin New Game</button>
-    </div>
-  </div>
-</body>
-
+  </body>
 </html>

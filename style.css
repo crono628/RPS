@@ -1,114 +1,82 @@
-* {
-  /* border: 1px solid black; */
-  font-family: 'VT323', monospace;
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Patrick Hand', cursive;
 }
 
-body {
-  background-color: aqua;
+html {
+  background-color: cadetblue;
 }
 
-h1 {
-  text-align: center;
-  margin-top: 40px;
-  color: navy;
-  font-size: 40px;
-}
-
-.choices {
+.container {
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  gap: 30px;
-  
-}
-
-.choice{
-  background: none;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  font-size: 30px;
-}
-
-.choice:hover {
-  transform: scale(1.5);
-  transition: 200ms
-}
-
-.current {
-  display: grid;
-  grid-template-columns: repeat(2, 200px);
   justify-content: center;
-  justify-items: center;
   align-items: center;
-  font-size: 30px;
 }
 
-.player-div,
-.computer-div {
-  font-size: 20px;
-  color: rgb(59, 59, 59);
-  opacity: 60%;
-  margin-left: 5px;
+.title {
+  margin-top: 30px;
+  font-size: 50px;
+}
+
+.scores {
   display: flex;
-  flex-direction: column-reverse;
-  justify-content: flex-start;
-  justify-items: center;
-  align-items: center;
-  width: auto;
-}
-
-.winner{
+  justify-content: space-around;
+  width: 350px;
+  margin: 15px;
   font-size: 25px;
-  color: rgb(0, 0, 0);
 }
 
-.announcement {
-  height: 80px;
-  text-align: center;
-  font-size: 40px;
-  margin-top: 10px;
-  padding: 10px;
+.selections {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  width: 80vw;
+  height: 150px;
+  max-width: 500px;
+  font-size: 80px;
 }
 
+.rock,
+.paper,
+.scissors {
+  transform: scale(1);
+  transition: 0.2s;
+  cursor: pointer;
+}
 
-.popup {
-  border: 5px solid black;
-  background-color: aqua;
-  position: absolute;
+.rock:hover,
+.paper:hover,
+.scissors:hover {
+  transition: 0.2s;
+  transform: scale(1.4);
+  cursor: pointer;
+}
+
+.results-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.results {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 300px;
-  height: 200px;
-  top: 50%;
-  left: 50%;
-  margin: -220px 0 0 -150px;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 35px;
-  animation-name: opacity;
-  animation-duration: 2s;
+  padding: 20px;
 }
 
-.popup-text{
-  display: none;
-  justify-content: center;
-  align-items: center;
-  flex-flow:  column
+.results > div {
+  padding: 40px;
 }
 
-
-.blur {
-  filter: blur(3px);
-  transition: 2s;
-}
-
-@keyframes opacity {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
+.winner {
+  font-weight: bolder;
+  font-size: 25px;
 }

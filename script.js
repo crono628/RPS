@@ -1,97 +1,72 @@
-const choiceBtn = document.querySelectorAll('[data-choice]')
-const announcement = document.querySelector('.announcement')
-const body = document.querySelector('.for-blur')
-const popupText = document.querySelector('.popup-text')
-const popup = document.querySelector('.popup')
-const playerTally = document.querySelector('[data-player]')
-const computerTally = document.querySelector('[data-computer]')
-const playerDiv = document.querySelector('.player-div')
-const computerDiv = document.querySelector('.computer-div')
-const restartBtn = document.querySelector('.restart')
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
+const selections = document.querySelector('.selections').childNodes;
+const playerResults = document.querySelector('.player-results');
+const computerResults = document.querySelector('.computer-results');
+const playerScoreboard = document.querySelector('.player-scoreboard');
+const computerScoreboard = document.querySelector('.computer-scoreboard');
 
-let gameOn = true
-let playerScore = 0
-let computerScore = 0
+let playerScore = 0;
+let computerScore = 0;
+let playerWinRound = null;
+let history = [];
 
-choiceBtn.forEach(button => {
-  button.addEventListener('click', () => {
-    const buttonChoice = button.dataset.choice
-    let computerChoice = computerPlay()
-    playerDiv.appendChild(recordSelection(buttonChoice))
-    computerDiv.appendChild(recordSelection(computerChoice))
-    playRound(buttonChoice, computerChoice)
-  })
-})
+selections.forEach((selection) => {
+  selection.addEventListener('click', (e) => {
+    game(e.target.className, computerMove());
+  });
+});
 
-restartBtn.onclick = () => restartGame()
+function computerMove() {
+  let randomNum = Math.floor(Math.random() * 3);
+  let choices = ['rock', 'paper', 'scissors'];
+  return choices[randomNum];
+}
 
-function restartGame() {
-  gameOn = true
-  playerScore = 0
-  computerScore = 0
-  body.classList.remove('blur')
-  popupText.style.display = 'none'
-  popup.style.display = 'none'
-  announcement.textContent = ''
-  playerTally.textContent = `${playerScore}`
-  computerTally.textContent = `${computerScore}`
-  while (playerDiv.firstChild) {
-    playerDiv.removeChild(playerDiv.firstChild);
-  }
-  while (computerDiv.firstChild) {
-    computerDiv.removeChild(computerDiv.firstChild);
+function showHistory() {
+  renderResults(playerResults);
+  renderResults(computerResults);
+  history.forEach((item) => {
+    let newDiv = document.createElement('div');
+    newDiv.textContent = item.player;
+    playerResults.appendChild(newDiv);
+  });
+  history.forEach((item) => {
+    let newDiv = document.createElement('div');
+    newDiv.textContent = item.computer;
+    computerResults.appendChild(newDiv);
+  });
+}
+
+function renderResults(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
   }
 }
 
-function computerPlay() {
-  const choices = ['rock', 'paper', 'scissors']
-  return choices[Math.floor(Math.random() * 3)];
-}
-
-function checkGameOn() {
-  if (playerScore == 3) {
-    gameOn = false
-    body.classList.add('blur')
-    popupText.style.display = 'flex'
-    popup.style.display = 'flex'
-    popupText.textContent = 'YOU ARE THE CHAMPION!'
-  } else if (computerScore == 3) {
-    gameOn = false
-    body.classList.add('blur')
-    popupText.style.display = 'flex'
-    popup.style.display = 'flex'
-    popupText.textContent = 'THE COMPUTER HAS DEFEATED YOU'
+function game(player, computer) {
+  playerWinRound = null;
+  history.unshift({ player: player, computer: computer });
+  if (player === computer) {
+    return;
+  } else if (
+    (player === 'rock' && computer === 'scissors') ||
+    (player === 'scissors' && computer === 'paper') ||
+    (player === 'paper' && computer === 'rock')
+  ) {
+    playerScore++;
+    playerScoreboard.textContent = `Player: ${playerScore}`;
+    playerWinRound = true;
   } else {
-    return
+    computerScore++;
+    computerScoreboard.textContent = `Player: ${computerScore}`;
+    playerWinRound = false;
   }
-}
-
-function playRound(player, computer) {
-  if (gameOn === false) {
-    return
-  }
-  else if (player === computer) {
-    announcement.textContent = 'Tie! Play again'
-  }
-  else if ((player === 'rock' && computer === 'scissors') || (player === 'paper' && computer == 'rock') || (player === 'scissors' && computer === 'paper')) {
-    announcement.textContent = 'You win this round!'
-    playerScore++
-    playerTally.textContent = `${playerScore}`
-    checkGameOn()
-  }
-  else if ((computer === 'rock' && player === 'scissors') || (computer === 'paper' && player == 'rock') || (computer === 'scissors' && player === 'paper')) {
-    announcement.textContent = 'The computer wins this round!'
-    computerScore++
-    computerTally.textContent = `${computerScore}`
-    checkGameOn()
-  } else {
-    return
-  }
-}
-
-function recordSelection(a) {
-  const div = document.createElement('div')
-  div.setAttribute('id', 'record')
-  div.textContent = `${a}`
-  return div
+  showHistory();
+  playerWinRound === true
+    ? playerResults.firstChild.classList.add('winner')
+    : playerWinRound === false
+    ? computerResults.firstChild.classList.add('winner')
+    : null;
 }
