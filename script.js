@@ -90,7 +90,7 @@ function game(player, computer) {
     } else {
       document.querySelector('.tie-results').textContent = '';
       computerScore++;
-      computerScoreboard.textContent = `Player: ${computerScore}`;
+      computerScoreboard.textContent = `Computer: ${computerScore}`;
       playerWinRound = false;
       computerResults.classList.add('winner');
       playerResults.classList.remove('winner');
